@@ -1,30 +1,31 @@
 package model;
 
-public class Acta {
-    private int numero;
-    private String fecha;
-    private String tipo;
+public class Acta implements Validable {
+    private int numeroActa;
+    private int folio;
+    private String fechaRegistro;
 
-    public Acta(int numero, String fecha, String tipo) {
-        this.numero = numero;
-        this.fecha = fecha;
-        this.tipo = tipo;
+    public Acta(int numeroActa, int folio, String fechaRegistro) {
+        this.numeroActa = numeroActa;
+        this.folio = folio;
+        this.fechaRegistro = fechaRegistro;
     }
 
-    public int getNumero() {
-        return numero;
+    public int getNumeroActa() {
+        return numeroActa;
     }
 
-    public String getFecha() {
-        return fecha;
+    public int getFolio() {
+        return folio;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getFechaRegistro() {
+        return fechaRegistro;
     }
 
+    // Método obligatorio implementado desde la interfaz Validable
     @Override
-    public String toString() {
-        return "Acta #" + numero + " - " + tipo + " - " + fecha;
+    public boolean validar() {
+        return this.numeroActa > 0 && this.folio > 0 && this.fechaRegistro != null;
     }
 }
